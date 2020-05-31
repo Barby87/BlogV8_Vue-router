@@ -1,23 +1,19 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Inicio from '../views/Inicio.vue';
-import Articulo from '../views/Articulo.vue';
 import SobreMi from '../views/SobreMi.vue';
 import Contacto from '../views/Contacto.vue';
+import Post from '../views/Post.vue';
+import Articulo from '../views/Articulo.vue';
 import NotFound from '../views/NotFound.vue';
 
 Vue.use(VueRouter);
 
   const routes = [
   {
-    path: '/inicio',
+    path: '/',
     name: 'Inicio',
     component: Inicio
-  },
-  {
-    path: '/articulo',
-    name: 'Articulo',
-    component: Articulo
   },
   {
     path: '/sobremi',
@@ -28,6 +24,18 @@ Vue.use(VueRouter);
     path: '/contacto',
     name: 'Contacto',
     component: Contacto
+  },
+  {
+    path: '/post',
+    name: 'Post',
+    component: Post,
+    children: [
+      {
+        path: ':articulo',
+        component: Articulo,
+        name: 'Articulo'
+      }
+    ]
   },
   {
     path: '*',
