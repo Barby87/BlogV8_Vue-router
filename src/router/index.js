@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 const Inicio = ()=> import ('../views/Inicio.vue');
-const SobreMi = ()=> ('../views/SobreMi.vue');
+const SobreMi = ()=> import('../views/SobreMi.vue');
 const Contacto = ()=> import('../views/Contacto.vue');
-const Post = ()=> ('../views/Post.vue');
+const Post = ()=> import('../views/Post.vue');
 import Articulo from '../views/Articulo.vue';
 import NotFound from '../views/NotFound.vue';
 import Administrador from '../views/Administrador.vue';
@@ -15,7 +15,7 @@ Vue.use(VueRouter);
     path: '/',
     name: 'Inicio',
     component: Inicio,
-    alias: ['/home','/inicio', '/portada']
+    alias: ['/home','/inicio', '/portada'],
   },
   {
     path: '/sobremi',

@@ -40,8 +40,6 @@
 <script>
 export default {
     name: 'Inicio',
-    props: ['alias'],
-    
     mounted() {
         this.$router.push('/') // redirecciona de forma forzada a través de la vista
     }     
