@@ -1,11 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Inicio from '../views/Inicio.vue';
-import SobreMi from '../views/SobreMi.vue';
-import Contacto from '../views/Contacto.vue';
-import Post from '../views/Post.vue';
+const Inicio = ()=> import ('../views/Inicio.vue');
+const SobreMi = ()=> ('../views/SobreMi.vue');
+const Contacto = ()=> import('../views/Contacto.vue');
+const Post = ()=> ('../views/Post.vue');
 import Articulo from '../views/Articulo.vue';
 import NotFound from '../views/NotFound.vue';
+import Administrador from '../views/Administrador.vue';
 
 Vue.use(VueRouter);
 
@@ -13,17 +14,26 @@ Vue.use(VueRouter);
   {
     path: '/',
     name: 'Inicio',
-    component: Inicio
+    component: Inicio,
+    alias: ['/home','/inicio', '/portada']
   },
   {
     path: '/sobremi',
     name: 'SobreMi',
-    component: SobreMi
+    component: SobreMi,
+    alias: ['/acerca']
   },
   {
     path: '/contacto',
     name: 'Contacto',
-    component: Contacto
+    component: Contacto,
+    alias: ['/contactame']
+  },
+  {
+    path: '/administrador/:id',
+    name: 'Administrador',
+    component: Administrador,
+    props: true
   },
   {
     path: '/post',

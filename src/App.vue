@@ -6,7 +6,11 @@
       <router-link to="/contacto">Contacto</router-link> |
       <router-link to="/post/1">Último artículo</router-link>
     </div>
-    <router-view/>
+    <transition name="fade">
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
+    </transition>
   </div>
 </template>
 
@@ -30,5 +34,19 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0}
+    50% { opacity: 0.5}
+    100% { opacity: 1}
+}  
+
+.fade-enter-active, .fade-leave-active {
+  /* transition: opacity .5s; */
+  transition: fadeIn .1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

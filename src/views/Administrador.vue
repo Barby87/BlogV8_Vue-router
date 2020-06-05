@@ -1,25 +1,18 @@
 <template>
   <div>
-        <header class="masthead" style="background-image:url('assets/img/home-bg.jpg');">
+        <header class="masthead" style="background-image: url('assets/img/home-bg.jpg');">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-lg-8 mx-auto">
                         <div class="site-heading">
-                            <h1>V8</h1><span class="subheading">Noticias y reseñas de automóviles</span></div>
+                            <h1 v-html="usuario"></h1>
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
-        <div class="container">
-            <div class="post-preview pt-5">
-                <router-link to="/post/1">
-                    <h2 class="post-title"><strong>Chevrolet presenta la totalmente nueva Blazer</strong></h2>
-                    <h3 class="post-subtitle">Llega&nbsp;como la primera SUV deportiva de la marca</h3>
-                </router-link>
-            </div>
-            <hr>
-        </div>
+     
         <footer>
             <div class="container">
                 <div class="row">
@@ -39,13 +32,22 @@
 
 <script>
 export default {
-    name: 'Inicio',
-    props: ['alias'],
-    
-    mounted() {
-        this.$router.push('/') // redirecciona de forma forzada a través de la vista
-    }     
-}
+    name: 'Administrador',
+    props: ['id'],
+    computed: {
+        usuario() {
+            // Con la propiedad computada se consigue que se haga un cambio automático, cuando se reciba el props
+            // this.id se refiere al props que está recibiendo como parámetro
+            if(this.id == 'simple') {
+                return "<strong>Bienvenido a la página de administración</strong>"
+            } else if(this.id == 'avanzado') {
+                return "<strong>Esta página de administración está en construcción. Intente nuevamente </strong>"
+            } else {
+                return "<strong>La página no existe - no tiene permiso</strong>"
+            }
+        }
+    }
+};
 </script>
 
 <style>
